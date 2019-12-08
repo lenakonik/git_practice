@@ -1,0 +1,14 @@
+//conCATenate all
+cat *
+//stream editor: delete line according to pattern and stdout
+sed 'QUERY*/d'
+sed '^*//'
+//OR find all the lines that don't match this pattern (invert match), case insensitive, and stdout
+grep -vi 'QUERY*|^*//*'
+//sort and output adjacent duplicates
+sort | uniq d > dupes.txt
+
+//if there are dupes, show in which files, ie search in folder for pattern from this command
+//-f tells grep to use patterns that come from a file
+//-F tells grep that those patterns are to be treated as fixed strings, not regex
+grep -RfF < dupes.txt 
